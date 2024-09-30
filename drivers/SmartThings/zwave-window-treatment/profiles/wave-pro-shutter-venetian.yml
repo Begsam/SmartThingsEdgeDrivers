@@ -1,0 +1,152 @@
+name: wave-pro-shutter-venetian
+components:
+- id: main
+  capabilities:
+  - id: windowShade
+    version: 1
+  - id: windowShadeLevel
+    version: 1
+  - id: powerMeter
+    version: 1
+  - id: energyMeter
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: Blind
+- id: venetianBlind
+  capabilities:
+  - id: windowShadeLevel
+    version: 1
+  categories:
+    - name: Blind
+preferences:
+  - name: "switchType"
+    title: "P1-Switch type"
+    description: "Description:This parameter defines how the Device should treat the switch (which type) connected to the SW (SW1) terminal."
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Momentary switch"
+        1: "Toggle switch (Cl-On, Op-Off)"
+        2: "Single,momentary switch (SW1)"
+      default: 0
+  - name: "inputsOrientation"
+    title: "P3-Inputs orientation"
+    description: "Description:This parameter allows to reverse the operation of switches connected to SW1 and SW2 inputs without changing the wiring."
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Default (SW1-O1, SW2-O2)"
+        1: "Reversed (SW1-O2, SW2-O1)"
+      default: 0 
+  - name: "outputOrientation"
+    title: "P5-Output orientation"
+    description: "Description:This parameter allows to reverse the operation of O1 and O2 without changing the wiring (in case of invalid motor connection) to ensure proper operation."
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Default (O1-UP, O2-DOWN)"
+        1: "Reversed (O1-DOWN, O2-UP)"
+      default: 0
+  - name: "powerConsumpReporting"
+    title: "P40-Power Consumption Reporting"
+    description: "Description:Choose by how much the power (W) consumption needs to increase or decrease to be reported. Values correspond to percentages, so if 50 is set (by default), the Device will report any power consumption changes of 50 % or more, compared to the last reading."
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 100
+      default: 50
+  - name: "operatingModes"
+    title: "P71-Operating modes"
+    description: "Description:Choose between the two operating modes. In shutter mode, you can select up/down/stop. In venetian mode, an additional widget/endpoint is displayed in the UI interface, which you can use to control the tilt position of the slats."
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Shutter mode"
+        1: "Venet.mode (up/dwn and slats rot.)"
+      default: 0
+  - name: "venBlindSlatsTurnTime"
+    title: "P72-Venet.blind slats turning time"
+    description: "Description: 0-turning time disabled, 1-32767 = 0.01 seconds-327.67 seconds. Set the time required for the slats to make a full turn (180 degrees)."
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 32000
+      default: 150
+  - name: "slatsPositionAfterMoving"
+    title: "P73-Slats position after moving"
+    description: "Description:This parameter is used to enable/disable the slats to return to the previously set position, after being activated via the gateway, push-button operation or when the lower limit switch is reached."
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Disable"
+        1: "Enable"
+      default: 1
+  - name: "motorOperationDetection"
+    title: "P76-Motor operation detection"
+    description: "Description: 0-Disabled: reaching a limit switch will not be detected, 1-Auto power calibration, 2- 1-255 (1-255W) - report interval. Define the power consumption threshold at the end positions. Based on this value, the Device will know that the shutters reached the limit switches."
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: Disabled (no sw det.)
+        1: Auto pw calibr.
+        2: 1-255W report int.
+      default: 1 
+  - name: "forcedShutterCalibration"
+    title: "P78-Forced shutter calibration"
+    description: "Description:By setting this parameter to value 1 the Device will start executing force calibration procedure. The parameter also reports the calibration status by sending the get parameter value command."
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        1: "Start calibration"
+        2: "Device is calibrated (read only)"
+        3: "Device is not calibrated (read only)"
+        4: "Calibration error (read only)"
+      default: 3
+  - name: "motorStopDelayAfterLSdet"
+    title: "P80-Mot.stop delay aft.sw.detect."
+    description: "Default value 10=(1s),0-255(0-25.5s)-time. This parameter defines the delay time for the motor to turn off, after reaching the limit switch."
+    required: false
+    preferenceType: number
+    definition:
+      minimum: 0
+      maximum : 255
+      default: 10
+  - name: "powerConsumptMaxDelay"
+    title: "P85-Power consump.max delay time"
+    description: "Descr: 0=time is set auto,3-50= 0.3sec-5sec(100ms res). Def. the max t before the pw consump. of the motor, after one relay is ON. If is no pw consumpt.during the set t (motor not conn., dmg or requires longer t to start, motor is at end pos.), the relay will go OFF. This t is def. by set it man."
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 50
+      default: 30
+  - name: "maxMotorMovingTime"
+    title: "P91-Max. Motor moving time"
+    description: "Description:value = 1-32000s, value=65000 = unlimited time. When the shutter is not calibrated (or the motor is not equipped with a limit switch), this parameter defines the movement time of the motor."
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 1
+      maximum: 65000
+      default: 120
+  - name: "factoryReset"
+    title: "P120-Factory reset"
+    description: "Reset to factory default settings and removed from the Z-Wave network."
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0 : "No action"
+        1 : "Factory Reset"
+      default: 0

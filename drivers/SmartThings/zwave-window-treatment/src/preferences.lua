@@ -81,7 +81,29 @@ local devices = {
     PARAMETERS = {
       openCloseTiming = {parameter_number = 35, size = 1}
     }
-  }
+  },
+  WAVE_PRO_SHUTTER = {
+    MATCHING_MATRIX = {
+      mfrs = 0x0460,
+      product_types = 0x0003,
+      product_ids = {0x0084}
+    },
+    PARAMETERS = {
+      switchType =              {parameter_number = 1, size = 1},
+      inputsOrientation =       {parameter_number = 3, size = 1},
+      outputOrientation =       {parameter_number = 5, size = 1},
+      powerConsumpReporting =   {parameter_number = 40, size = 1},
+      operatingModes=           {parameter_number = 71, size = 1},
+      venBlindSlatsTurnTime=    {parameter_number = 72, size = 2},
+      slatsPositionAfterMoving= {parameter_number = 73, size = 1},
+      motorOperationDetection=  {parameter_number = 76, size = 1},
+      forcedShutterCalibration= {parameter_number = 78, size = 1},
+      motorStopDelayAfterLSdet= {parameter_number = 80, size = 1},
+      powerConsumptMaxDelay=    {parameter_number = 85, size = 1},
+      maxMotorMovingTime=       {parameter_number = 91, size = 2},
+      factoryReset=             {parameter_number = 120, size = 4}
+    },
+  },
 }
 
 local preferences = {}
