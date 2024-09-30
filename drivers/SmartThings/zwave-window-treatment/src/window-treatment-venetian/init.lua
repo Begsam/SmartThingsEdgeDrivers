@@ -23,6 +23,7 @@ local WINDOW_TREATMENT_VENETIAN_FINGERPRINTS = {
   {mfr = 0x010F, prod = 0x1D01, model = 0x1000}, -- Fibaro Walli Roller Shutter
   {mfr = 0x0159, prod = 0x0003, model = 0x0052}, -- Qubino Flush Shutter AC
   {mfr = 0x0159, prod = 0x0003, model = 0x0053}, -- Qubino Flush Shutter DC
+  {mfr = 0x0460, prod = 0x0003, model = 0x0082}, -- Shelly Wave Shutter
 }
 
 local function can_handle_window_treatment_venetian(opts, driver, device, ...)
@@ -76,7 +77,8 @@ local window_treatment_venetian = {
   },
   sub_drivers = {
     require("window-treatment-venetian/fibaro-roller-shutter"),
-    require("window-treatment-venetian/qubino-flush-shutter")
+    require("window-treatment-venetian/qubino-flush-shutter"),
+    require("window-treatment-venetian/shelly-wave-shutter")
   }
 }
 

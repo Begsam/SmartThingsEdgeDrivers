@@ -23,8 +23,8 @@ local preferencesMap = require "preferences"
 
 local function added_handler(self, device)
   device:emit_event(capabilities.windowShade.supportedWindowShadeCommands({"open", "close", "pause"}, { visibility = { displayed = false } }))
-end
-
+end  
+  
 --- Handle preference changes
 ---
 --- @param driver st.zwave.Driver
@@ -64,7 +64,7 @@ local driver_template = {
     require("iblinds-window-treatment"),
     require("window-treatment-venetian"),
     require("aeotec-nano-shutter")
-  }
+  },
 }
 
 defaults.register_for_default_handlers(driver_template, driver_template.supported_capabilities)

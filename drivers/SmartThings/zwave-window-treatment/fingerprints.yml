@@ -62,7 +62,13 @@ zwaveManufacturer:
     manufacturerId: 0x0115
     productId: 0x0010
     productType: 0x0211
-    deviceProfileName: window-treatment-preset-reverse  
+    deviceProfileName: window-treatment-preset-reverse 
+  - id: Wave Shutter
+    deviceLabel: Wave Shutter
+    manufacturerId: 0x0460
+    productType: 0x0003
+    productId: 0x0082
+    deviceProfileName: wave-shutter
 zwaveGeneric:
   - id: window-treatment/generic/1
     deviceLabel: Z-Wave Window Treatment
