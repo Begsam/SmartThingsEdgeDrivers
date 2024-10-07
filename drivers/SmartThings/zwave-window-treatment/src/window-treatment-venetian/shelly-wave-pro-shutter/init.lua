@@ -41,12 +41,12 @@ local SHADE_TARGET = "shade_target"
 local ENERGY_UNIT_KWH = "kWh"
 local POWER_UNIT_WATT = "W"
 
-local SHELLY_WAVE_PRO_SHUTTER_FINGERPRINTS = {
+local WAVE_PRO_SHUTTER_FINGERPRINTS = {
   {mfr = 0x0460, prod = 0x0003, model = 0x0084}, -- Shelly Wave Pro Shutter
 }
 
-local function can_handle_shelly_wave_ProShutter(opts, self, device, ...)
-  for _, fingerprint in ipairs(SHELLY_WAVE_PRO_SHUTTER_FINGERPRINTS) do
+local function can_handle_wave_pro_shutter(opts, self, device, ...)
+  for _, fingerprint in ipairs(WAVE_PRO_SHUTTER_FINGERPRINTS) do
     if device:id_match( fingerprint.mfr, fingerprint.prod, fingerprint.model) then
       return true
     end
@@ -60,9 +60,9 @@ local function configuration_report(self, device, cmd)
 
   if parameter_number == OPERATING_MODE_CONFIGURATION then
     if configuration_value == 0 then
-      device:try_update_metadata({profile = "wave-shutter"})
+      device:try_update_metadata({profile = "wave-pro-shutter"})
     elseif configuration_value == 1 then
-      device:try_update_metadata({profile = "wave-shutter-venetian"})
+      device:try_update_metadata({profile = "wave-pro-shutter-venetian"})
     end
   end
 end
@@ -164,11 +164,11 @@ local function device_added(self, device)
   --device:send(Configuration:Set({parameter_number = 40, size = 1, configuration_value = 10}))
   device:send(Configuration:Set({parameter_number = 71, size = 1, configuration_value = 0}))
   device:emit_event(capabilities.windowShade.supportedWindowShadeCommands({"open", "close", "pause"}, { visibility = { displayed = false } }))
-  device:emit_event(capabilities.windowShadeLevel.supportedWindowShadeLevelCommands({"open", "close", "pause"}, { visibility = { displayed = false } }))
+  --device:emit_event(capabilities.windowShadeLevel.supportedWindowShadeLevelCommands({"open", "close", "pause"}, { visibility = { displayed = false } }))
   device:refresh()
 end
 
-local shelly_wave_ProShutter = {
+local wave_pro_shutter = {
   NAME = "wave pro shutter",
   zwave_handlers = {
     [cc.CONFIGURATION] = {
@@ -189,16 +189,12 @@ local shelly_wave_ProShutter = {
       [capabilities.windowShade.commands.open.NAME] = open,
       [capabilities.windowShade.commands.close.NAME] = close
     },
-    --[capabilities.windowShadeLevel.ID] = {
-      --[capabilities.windowShadeLevel.commands.open.NAME] = open,
-      --[capabilities.windowShadeLevel.commands.close.NAME] = close
-    --},
   },
-  can_handle = can_handle_shelly_wave_ProShutter,
+  can_handle = can_handle_wave_pro_shutter,
   lifecycle_handlers = {
     added = device_added,
     infoChanged = info_changed
   },
 }
 
-return shelly_wave_ProShutter
+return wave_pro_shutter

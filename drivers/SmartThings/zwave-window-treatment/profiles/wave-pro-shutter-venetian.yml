@@ -73,7 +73,7 @@ preferences:
       default: 0
   - name: "venBlindSlatsTurnTime"
     title: "P72-Venet.blind slats turning time"
-    description: "Description: 0-turning time disabled, 1-32767 = 0.01 seconds-327.67 seconds. Set the time required for the slats to make a full turn (180 degrees)."
+    description: "Description: 0-turning time disabled, 1-32000 = 0.01 seconds-320.00 seconds. Set the time required for the slats to make a full turn (180 degrees)."
     required: false
     preferenceType: integer
     definition:
@@ -115,12 +115,12 @@ preferences:
       default: 3
   - name: "motorStopDelayAfterLSdet"
     title: "P80-Mot.stop delay aft.sw.detect."
-    description: "Default value 10=(1s),0-255(0-25.5s)-time. This parameter defines the delay time for the motor to turn off, after reaching the limit switch."
+    description: "Default value 10=(1s),0-127(0-12.7s)-time. This parameter defines the delay time for the motor to turn off, after reaching the limit switch."
     required: false
     preferenceType: number
     definition:
       minimum: 0
-      maximum : 255
+      maximum : 127
       default: 10
   - name: "powerConsumptMaxDelay"
     title: "P85-Power consump.max delay time"
@@ -133,12 +133,12 @@ preferences:
       default: 30
   - name: "maxMotorMovingTime"
     title: "P91-Max. Motor moving time"
-    description: "Description:value = 1-32000s, value=65000 = unlimited time. When the shutter is not calibrated (or the motor is not equipped with a limit switch), this parameter defines the movement time of the motor."
+    description: "Description:value = 1-32000s. When the shutter is not calibrated (or the motor is not equipped with a limit switch), this parameter defines the movement time of the motor."
     required: false
     preferenceType: integer
     definition:
       minimum: 1
-      maximum: 65000
+      maximum: 32000
       default: 120
   - name: "factoryReset"
     title: "P120-Factory reset"

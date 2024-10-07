@@ -68,7 +68,7 @@ zwaveManufacturer:
     manufacturerId: 0x0460
     productType: 0x0003
     productId: 0x0084
-    deviceProfileName: wave-shutter
+    deviceProfileName: wave-pro-shutter
 
 zwaveGeneric:
   - id: window-treatment/generic/1
