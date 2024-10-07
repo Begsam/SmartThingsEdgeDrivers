@@ -189,18 +189,12 @@ local shutter = {
       [capabilities.windowShade.commands.open.NAME] = open,
       [capabilities.windowShade.commands.close.NAME] = close
     },
-    ---------------------------------------------------------------------
-    --[capabilities.windowShadeLevel.ID] = {
-      --[capabilities.windowShadeLevel.commands.open.NAME] = open,
-      --[capabilities.windowShadeLevel.commands.close.NAME] = close
-    --},
-    ---------------------------------------------------------------------
   },
-  can_handle = can_handle_shutter,
+  can_handle = can_handle_wave_shutter,
   lifecycle_handlers = {
     added = device_added,
     infoChanged = info_changed
   },
 }
 
-return shutter
+return wave_shutter
