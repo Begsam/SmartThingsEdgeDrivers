@@ -45,7 +45,7 @@ local SHUTTER_FINGERPRINTS = {
   {mfr = 0x0460, prod = 0x0003, model = 0x0082}, -- Shelly Wave Shutter
 }
 
-local function can_handle_shutter(opts, self, device, ...)
+local function can_handle_wave_shutter(opts, self, device, ...)
   for _, fingerprint in ipairs(SHUTTER_FINGERPRINTS) do
     if device:id_match( fingerprint.mfr, fingerprint.prod, fingerprint.model) then
       return true
@@ -164,7 +164,7 @@ local function device_added(self, device)
   --device:send(Configuration:Set({parameter_number = 40, size = 1, configuration_value = 10}))
   device:send(Configuration:Set({parameter_number = 71, size = 1, configuration_value = 0}))
   device:emit_event(capabilities.windowShade.supportedWindowShadeCommands({"open", "close", "pause"}, { visibility = { displayed = false } }))
-  device:emit_event(capabilities.windowShadeLevel.supportedWindowShadeLevelCommands({"open", "close", "pause"}, { visibility = { displayed = false } }))
+  --device:emit_event(capabilities.windowShadeLevel.supportedWindowShadeLevelCommands({"open", "close", "pause"}, { visibility = { displayed = false } }))
   device:refresh()
 end
 
