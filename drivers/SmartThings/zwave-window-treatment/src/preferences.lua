@@ -101,7 +101,7 @@ local devices = {
       motorStopDelayAfterLSdet= {parameter_number = 80, size = 1},
       powerConsumptMaxDelay=    {parameter_number = 85, size = 1},
       maxMotorMovingTime=       {parameter_number = 91, size = 2},
-      factoryReset=             {parameter_number = 120, size = 4}
+      factoryReset=             {parameter_number = 120, size = 2}
     }
   },
   WAVE_PRO_SHUTTER = {
