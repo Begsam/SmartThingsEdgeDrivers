@@ -168,7 +168,7 @@ local function device_added(self, device)
   device:refresh()
 end
 
-local shutter = {
+local wave_shutter = {
   NAME = "shutter",
   zwave_handlers = {
     [cc.CONFIGURATION] = {
