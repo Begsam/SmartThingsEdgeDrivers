@@ -148,6 +148,17 @@ local devices = {
       ledLowBrightness = {parameter_number = 82, size = 2},
       ledHighBrightness = {parameter_number = 83, size = 2}
     }
+  },
+  SHELLY_WAVE_DOOR_WINDOW_SENSOR = {
+    MATCHING_MATRIX = {
+      mfrs = 0x0460,
+      product_types = 0x0100,
+      product_ids = {0x0081}
+    },
+    PARAMETERS = {
+      illumMeas = {parameter_number = 155, size = 1},
+      ledOpnClsChangeStat = {parameter_number = 157, size = 1}
+    }
   }
 }
 local preferences = {}
