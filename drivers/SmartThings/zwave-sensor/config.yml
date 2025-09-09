@@ -4,4 +4,3 @@ permissions:
   zwave: {}
 description: "SmartThings driver for Z-Wave sensor devices"
 vendorSupportInformation: "https://support.smartthings.com"
- 
