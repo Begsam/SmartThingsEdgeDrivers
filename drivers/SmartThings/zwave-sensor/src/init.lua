@@ -153,10 +153,6 @@ local driver_template = {
     lazy_load_if_possible("timed-tamper-clear"),
     lazy_load_if_possible("wakeup-no-poll"),
     lazy_load_if_possible("apiv6_bugfix"),
-<<<<<<< HEAD
-    lazy_load_if_possible("shelly-wave-door-window")
-=======
->>>>>>> 1730cbc16e73d40551e430f7f03db1de36f745ae
   },
   lifecycle_handlers = {
     added = added_handler,

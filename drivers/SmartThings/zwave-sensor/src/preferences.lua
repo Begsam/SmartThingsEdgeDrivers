@@ -149,19 +149,6 @@ local devices = {
       ledHighBrightness = {parameter_number = 83, size = 2}
     }
   },
-<<<<<<< HEAD
-  SHELLY_WAVE_DOOR_WINDOW_SENSOR = {
-    MATCHING_MATRIX = {
-      mfrs = 0x0460,
-      product_types = 0x0100,
-      product_ids = {0x0081}
-    },
-    PARAMETERS = {
-      illumMeas = {parameter_number = 155, size = 1},
-      ledOpnClsChangeStat = {parameter_number = 157, size = 1}
-    }
-  }
-=======
   SHELLY_WAVE_MOTION_SENSOR = {
     MATCHING_MATRIX = {
       mfrs = 0x0460,
@@ -175,7 +162,6 @@ local devices = {
       motionNotdetRepT = {parameter_number = 160, size = 2},
     },
   },
->>>>>>> 1730cbc16e73d40551e430f7f03db1de36f745ae
 }
 local preferences = {}
 
