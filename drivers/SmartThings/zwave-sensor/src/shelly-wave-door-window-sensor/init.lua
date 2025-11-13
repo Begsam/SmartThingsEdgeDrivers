@@ -30,13 +30,12 @@ local WAVE_DOOR_WINDOW_SENSOR_FINGERPRINTS = {
 -- @param driver Driver driver instance
 -- @param device Device device isntance
 -- @return boolean true if the device proper, else false
-local function can_handle_wave_door_window_sensor(opts, driver, device, ...)
-  for _, fingerprint in ipairs(WAVE_DOOR_WINDOW_SENSOR_FINGERPRINTS) do
-    if device:id_match(fingerprint.manufacturerId, fingerprint.productType, fingerprint.productId) then
-      return true
-    end
-  end
-  return false
+
+local function can_handle_wave_door_window_sensor(opts, driver, device, cmd, ...)
+  if device:id_match(fingerprint.manufacturerId, fingerprint.productType, fingerprint.productId) then
+    local subdriver = require("shelly-wave-door-window-sensor")
+    return true, subdriver
+  else return false end
 end
 
 --- Handler for notification report command class
@@ -73,15 +72,15 @@ end
 
 
 
-local function sensor_multilevel_report_handler(self, device, cmd)
-  if cmd.args.sensor_type == SensorMultilevel.sensor_type.LUMINANCE then
-    device:emit_event(capabilities.illuminanceMeasurement.illuminance({value = cmd.args.sensor_value, unit = "lux"}))
-  elseif cmd.args.sensor_type == SensorMultilevel.sensor_type.DIRECTION then
+--local function sensor_multilevel_report_handler(self, device, cmd)
+  --if cmd.args.sensor_type == SensorMultilevel.sensor_type.LUMINANCE then
+    --device:emit_event(capabilities.illuminanceMeasurement.illuminance({value = cmd.args.sensor_value, unit = "lux"}))
+  --elseif cmd.args.sensor_type == SensorMultilevel.sensor_type.DIRECTION then
       --device:emit_event(capabilities.switchLevel.levelRange({value = cmd.args.sensor_value, unit = "%"}))
-      device:emit_event(capabilities.relativeHumidityMeasurement.humidity({value = cmd.args.sensor_value, unit = "%"}))
+      --device:emit_event(capabilities.relativeHumidityMeasurement.humidity({value = cmd.args.sensor_value, unit = "%"}))
       --device:emit_event(capabilities.infraredLevel.infraredLevel({value = cmd.args.sensor_value, unit = ""}))
-  end
-end
+  --end
+--end
 
 local wave_door_window_sensor = {
   zwave_handlers = {

@@ -4,12 +4,6 @@ components:
   capabilities:
   - id: contactSensor
     version: 1
-  - id: illuminanceMeasurement
-    version: 1
-    config:
-      values:
-        - key: "illuminance.value"
-          range: [0, 10000]
   - id: battery
     version: 1
   - id: refresh
