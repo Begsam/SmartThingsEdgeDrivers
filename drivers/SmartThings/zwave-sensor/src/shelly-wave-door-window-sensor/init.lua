@@ -68,20 +68,6 @@ end
 -- @param device st.zwave.Device
 -- @param cmd st.zwave.CommandClass.SensorMultilevel.Report
 
-
-
-
-
---local function sensor_multilevel_report_handler(self, device, cmd)
-  --if cmd.args.sensor_type == SensorMultilevel.sensor_type.LUMINANCE then
-    --device:emit_event(capabilities.illuminanceMeasurement.illuminance({value = cmd.args.sensor_value, unit = "lux"}))
-  --elseif cmd.args.sensor_type == SensorMultilevel.sensor_type.DIRECTION then
-      --device:emit_event(capabilities.switchLevel.levelRange({value = cmd.args.sensor_value, unit = "%"}))
-      --device:emit_event(capabilities.relativeHumidityMeasurement.humidity({value = cmd.args.sensor_value, unit = "%"}))
-      --device:emit_event(capabilities.infraredLevel.infraredLevel({value = cmd.args.sensor_value, unit = ""}))
-  --end
---end
-
 local wave_door_window_sensor = {
   zwave_handlers = {
     [cc.NOTIFICATION] = {
