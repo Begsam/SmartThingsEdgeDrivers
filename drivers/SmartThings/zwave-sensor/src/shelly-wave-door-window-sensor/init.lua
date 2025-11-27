@@ -20,8 +20,8 @@ local Notification = (require "st.zwave.CommandClass.Notification")({ version = 
 -- @type st.zwave.CommandClass.SensorMultilevel
 local SensorMultilevel = (require "st.zwave.CommandClass.SensorMultilevel")({ version = 5 })
 -- @type st.utils
-local utils = require "st.utils"
-local WakeUp = (require "st.zwave.CommandClass.WakeUp")({ version = 2 })
+
+local WAVE_DOOR_WINDOW_SENSOR_FINGERPRINTS = {
 
 local WAVE_DOOR_WINDOW_SENSOR_FINGERPRINTS = {
   { manufacturerId = 0x0460, prod = 0x0100, productId = 0x0081 }  -- Wave Door/Window sensor
