@@ -18,12 +18,12 @@ local cc = require "st.zwave.CommandClass"
 -- @type st.zwave.CommandClass.Notification
 local Notification = (require "st.zwave.CommandClass.Notification")({ version = 3 })
 -- @type st.zwave.CommandClass.SensorMultilevel
-local SensorMultilevel = (require "st.zwave.CommandClass.SensorMultilevel")({ version = 5 })
+-----local SensorMultilevel = (require "st.zwave.CommandClass.SensorMultilevel")({ version = 5 })
 -- @type st.utils
 
-local WAVE_DOOR_WINDOW_SENSOR_FINGERPRINTS = {
-  { manufacturerId = 0x0460, prod = 0x0100, productId = 0x0081 }  -- Wave Door/Window sensor
-}
+-----local WAVE_DOOR_WINDOW_SENSOR_FINGERPRINTS = {
+-----  { manufacturerId = 0x0460, prod = 0x0100, productId = 0x0081 }  -- Wave Door/Window sensor
+-----}
 
 -- @param driver Driver driver instance
 -- @param device Device device isntance
